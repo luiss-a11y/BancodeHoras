@@ -26,11 +26,11 @@
   --ink2:     #6b5c4e;
   --ink3:     #a0907f;
 
-  /* Accent — terracota */
-  --accent:   #c4693a;
-  --accent2:  #a8532a;
-  --accent-a: rgba(196,105,58,.1);
-  --accent-b: rgba(196,105,58,.18);
+  /* Accent — azul JCA */
+  --accent:   #2f5f98;
+  --accent2:  #1f3f6b;
+  --accent-a: rgba(47,95,152,.1);
+  --accent-b: rgba(47,95,152,.18);
 
   /* Semantic */
   --green:    #2d7d52;
@@ -75,7 +75,7 @@ input, select { font-family: var(--sans); }
   background: var(--accent);
   display: flex; align-items: center; justify-content: center;
   font-weight: 800; font-size: 13px; color: #fff; letter-spacing: -.5px;
-  box-shadow: 0 2px 8px rgba(196,105,58,.35);
+  box-shadow: 0 2px 8px rgba(47,95,152,.35);
 }
 .logo-name { font-size: 15px; font-weight: 700; color: var(--ink); letter-spacing: -.3px; }
 .logo-sub  { font-size: 11px; color: var(--ink3); margin-top: 1px; }
@@ -161,10 +161,10 @@ input, select { font-family: var(--sans); }
   background: var(--accent); color: #fff; border: none;
   border-radius: var(--r); padding: 12px 28px;
   font-size: 13px; font-weight: 600;
-  box-shadow: 0 2px 10px rgba(196,105,58,.35);
+  box-shadow: 0 2px 10px rgba(47,95,152,.35);
   transition: all .15s;
 }
-.btn-accent:hover { background: var(--accent2); transform: translateY(-1px); box-shadow: 0 4px 14px rgba(196,105,58,.4); }
+.btn-accent:hover { background: var(--accent2); transform: translateY(-1px); box-shadow: 0 4px 14px rgba(47,95,152,.4); }
 .upload-hint { margin-top: 12px; font-size: 12px; color: var(--ink3); }
 .upload-feats { display: flex; gap: 18px; flex-wrap: wrap; justify-content: center; }
 .upload-feat { display: flex; align-items: center; gap: 7px; font-size: 12px; color: var(--ink2); }
@@ -290,8 +290,8 @@ td.mn { font-family: var(--mono); font-size: 12px; }
   display: flex; align-items: center; justify-content: center; gap: 5px;
 }
 .dc-btn:hover { background: var(--bg1); border-color: var(--border2); color: var(--ink); }
-.dc-btn.primary { background: var(--accent); color: #fff; border-color: var(--accent); font-weight: 600; box-shadow: 0 2px 8px rgba(196,105,58,.25); }
-.dc-btn.primary:hover { background: var(--accent2); box-shadow: 0 3px 12px rgba(196,105,58,.35); }
+.dc-btn.primary { background: var(--accent); color: #fff; border-color: var(--accent); font-weight: 600; box-shadow: 0 2px 8px rgba(47,95,152,.25); }
+.dc-btn.primary:hover { background: var(--accent2); box-shadow: 0 3px 12px rgba(47,95,152,.35); }
 .dc-btn:disabled { opacity: .38; cursor: not-allowed; pointer-events: none; }
 
 /* ── CHARTS ───────────────────────────── */
@@ -436,10 +436,10 @@ td.mn { font-family: var(--mono); font-size: 12px; }
   padding: 10px 22px; border-radius: var(--r);
   background: var(--accent); color: #fff; border: none;
   font-size: 13px; font-weight: 600;
-  box-shadow: 0 2px 8px rgba(196,105,58,.3);
+  box-shadow: 0 2px 8px rgba(47,95,152,.3);
   transition: all .15s;
 }
-.btn-print:hover { background: var(--accent2); transform: translateY(-1px); box-shadow: 0 4px 12px rgba(196,105,58,.4); }
+.btn-print:hover { background: var(--accent2); transform: translateY(-1px); box-shadow: 0 4px 12px rgba(47,95,152,.4); }
 .btn-print:disabled { opacity: .38; cursor: not-allowed; transform: none; box-shadow: none; }
 .btn-cancel {
   padding: 10px 16px; border-radius: var(--r);
@@ -484,19 +484,19 @@ td.mn { font-family: var(--mono); font-size: 12px; }
 }
 #print-zone { display: none; }
 .print-page { font-family: 'Inter', sans-serif; max-width: 740px; margin: 0 auto; padding: 36px 40px; }
-.print-logo  { display: flex; align-items: center; gap: 12px; margin-bottom: 28px; padding-bottom: 18px; border-bottom: 2px solid #c4693a; }
-.print-logo-mark { width: 38px; height: 38px; background: #c4693a; border-radius: 9px; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 14px; color: #fff; }
+.print-logo  { display: flex; align-items: center; gap: 12px; margin-bottom: 28px; padding-bottom: 18px; border-bottom: 2px solid #2f5f98; }
+.print-logo-mark { width: 38px; height: 38px; background: #2f5f98; border-radius: 9px; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 14px; color: #fff; }
 .print-logo-name { font-size: 16px; font-weight: 700; color: #2c2219; }
 .print-logo-sub  { font-size: 11px; color: #6b5c4e; margin-top: 2px; }
 .print-meta { display: flex; gap: 20px; flex-wrap: wrap; margin-bottom: 8px; }
 .print-meta-item { font-size: 12px; color: #6b5c4e; }
 .print-meta-item strong { color: #2c2219; }
-.print-dept { font-size: 18px; font-weight: 700; color: #c4693a; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 1px solid #e8dfd4; }
+.print-dept { font-size: 18px; font-weight: 700; color: #2f5f98; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 1px solid #e8dfd4; }
 .print-tbl { width: 100%; border-collapse: collapse; margin-bottom: 28px; }
 .print-tbl th { background: #f5f0ea; padding: 9px 14px; text-align: left; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: #6b5c4e; border: 1px solid #e2d9ce; }
 .print-tbl td { padding: 10px 14px; font-size: 13px; color: #2c2219; border: 1px solid #e2d9ce; }
 .print-tbl tr:nth-child(even) td { background: #faf7f4; }
-.print-tbl .hi { font-weight: 700; color: #c4693a; }
+.print-tbl .hi { font-weight: 700; color: #2f5f98; }
 .print-footer { font-size: 11px; color: #a0907f; padding-top: 14px; border-top: 1px solid #e2d9ce; display: flex; justify-content: space-between; }
 
 @media (max-width: 900px) {
@@ -546,7 +546,7 @@ td.mn { font-family: var(--mono); font-size: 12px; }
   padding: 8px 18px; border-radius: var(--r);
   background: var(--accent); color: #fff; border: none;
   font-size: 12px; font-weight: 600;
-  box-shadow: 0 2px 8px rgba(196,105,58,.3); transition: all .15s;
+  box-shadow: 0 2px 8px rgba(47,95,152,.3); transition: all .15s;
 }
 .btn-copy:hover { background: var(--accent2); transform: translateY(-1px); }
 .btn-copy.copied { background: var(--green); }
@@ -1213,7 +1213,7 @@ function openEmail(depto){
 
   const emailHtml=''
     +'<div style="font-family:Arial,sans-serif;max-width:760px;margin:0 auto">'
-    +'<div style="background:#c4693a;padding:20px 28px;border-radius:10px 10px 0 0;display:flex;align-items:center;gap:12px">'
+    +'<div style="background:#2f5f98;padding:20px 28px;border-radius:10px 10px 0 0;display:flex;align-items:center;gap:12px">'
     +'<div style="width:36px;height:36px;background:rgba(255,255,255,.22);border-radius:9px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px;color:#fff;flex-shrink:0">BH</div>'
     +'<div><div style="font-size:16px;font-weight:700;color:#fff">Banco de Horas — Fechamento do Período</div>'
     +'<div style="font-size:12px;color:rgba(255,255,255,.8);margin-top:2px">JCA Contadores</div></div></div>'
@@ -1323,7 +1323,7 @@ function renderFin(){
 }
 
 // ── CHARTS ──────────────────────────────
-const PAL=['#c4693a','#2d7d52','#b07d1a','#2d5fa8','#8b4a6e','#3d7d6e','#7a4a2d','#4a6d3d','#6d4a2d','#2d4a7a','#9a6a3d','#4a8b6d','#6d2d3d','#3d6d8b','#8b7a2d'];
+const PAL=['#2f5f98','#2d7d52','#b07d1a','#2d5fa8','#8b4a6e','#3d7d6e','#7a4a2d','#4a6d3d','#6d4a2d','#2d4a7a','#9a6a3d','#4a8b6d','#6d2d3d','#3d6d8b','#8b7a2d'];
 function cco(){return{grid:'rgba(120,90,60,.08)',tick:'#6b5c4e',val:'#2c2219'}}
 function dest(id){if(charts[id]){charts[id].destroy();charts[id]=null}}
 
@@ -1341,7 +1341,7 @@ function renderCharts(){
   const cCo=D.filter(d=>!d.neg&&d.folgas===0&&d.saldo_min!==0).length,cNe=D.filter(d=>d.neg).length,cZe=D.filter(d=>d.saldo_min===0).length;
   charts['sit']=new Chart(document.getElementById('ch-sit'),{type:'doughnut',
     data:{labels:['Folga+Comp.','Só Folga','Só Compensação','Negativo','Zerado'],
-      datasets:[{data:[cFCo,cFo,cCo,cNe,cZe],backgroundColor:['#c4693a','#2d7d52','#b07d1a','#b83232','#a0907f'],borderWidth:0,hoverOffset:8}]},
+      datasets:[{data:[cFCo,cFo,cCo,cNe,cZe],backgroundColor:['#2f5f98','#2d7d52','#b07d1a','#b83232','#a0907f'],borderWidth:0,hoverOffset:8}]},
     options:{responsive:true,maintainAspectRatio:true,cutout:'65%',
       plugins:{legend:{position:'right',labels:{color:c.val,font:{size:11},padding:10}},
         tooltip:{callbacks:{label:v=>`${v.label}: ${v.raw} (${((v.raw/D.length)*100).toFixed(0)}%)`}}}}});
