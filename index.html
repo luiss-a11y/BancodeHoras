@@ -1177,12 +1177,26 @@ function closeMod(e){if(!e||e.target===document.getElementById('modal-ov'))docum
 document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeMod();closeDrawer();closeEmail()}});
 
 // ── EMAIL ──────────────────────────────
+function sugestaoPeriodo(txt){
+  const m=txt.match(/(\d{2})\/(\d{2})\/(\d{4})\s*[–-]\s*(\d{2})\/(\d{2})\/(\d{4})/);
+  if(!m)return txt;
+  const [,d1,mo1,y1,d2,mo2,y2]=m;
+  const mo1n=+mo1,mo2n=+mo2;
+  const quarterStart={1:1,4:2,7:3,10:4};
+  const lastDay={3:31,6:30,9:30,12:31};
+  if(d1==='01'&&quarterStart[mo1n]&&y1===y2&&mo2n===mo1n+2&&+d2===lastDay[mo2n]){
+    return quarterStart[mo1n]+'º Trimestre '+y1;
+  }
+  return txt;
+}
 function openEmail(depto){
-  const period=document.getElementById('period-badge').textContent.replace('📅 ','');
+  const periodBadge=document.getElementById('period-badge').textContent.replace('📅 ','');
   const now=new Date().toLocaleDateString('pt-BR');
   const colabs=D.filter(d=>d.depto===depto&&!d.neg&&(d.folgas>0||d.residuo_min>0)).sort((a,b)=>cap(a.nome).localeCompare(cap(b.nome)));
   if(!colabs.length){alert('Nenhum colaborador com folga ou compensação pendente neste departamento.');return}
 
+  const period=prompt('Período a exibir no e-mail (ex: "1º Trimestre 2026"):',sugestaoPeriodo(periodBadge));
+  if(period===null)return;
   const addDays=(d,n)=>{const r=new Date(d);r.setDate(r.getDate()+n);return r};
   const fmtDate=d=>d.toLocaleDateString('pt-BR');
   const prazoRepasse=prompt('Até qual data o gestor deve repassar as datas de uso das folgas/compensação?',fmtDate(addDays(new Date(),10)));
@@ -1203,8 +1217,8 @@ function openEmail(depto){
     const folgaTxt=d.folgas>0?d.folgas+' dia'+(d.folgas!==1?'s':''):'—';
     const resTxt=d.residuo_min!==0?fm(d.residuo_min):'—';
     return '<tr style="background:'+rowBg+'">'
-      +'<td style="padding:9px 14px;border-bottom:1px solid #e8dfd4;font-size:13px;color:#2c2219;font-weight:500;white-space:nowrap">'+cap(d.nome)+'</td>'
-      +'<td style="padding:9px 14px;border-bottom:1px solid #e8dfd4;font-size:12px;color:#6b5c4e;white-space:nowrap">'+cap(d.funcao||'—')+'</td>'
+      +'<td style="padding:9px 14px;border-bottom:1px solid #e8dfd4;font-size:13px;color:#2c2219;font-weight:500;white-space:nowrap">'+d.nome+'</td>'
+      +'<td style="padding:9px 14px;border-bottom:1px solid #e8dfd4;font-size:12px;color:#6b5c4e;white-space:nowrap">'+(d.funcao||'—')+'</td>'
       +'<td style="padding:9px 14px;border-bottom:1px solid #e8dfd4;font-size:13px;text-align:center;font-weight:700;color:'+(d.folgas>0?'#2d7d52':'#a0907f')+'">'+folgaTxt+'</td>'
       +'<td style="padding:9px 14px;border-bottom:1px solid #e8dfd4;font-size:13px;text-align:center;font-family:monospace;color:'+(d.residuo_min!==0?d.neg?'#b83232':'#b07d1a':'#a0907f')+'">'+resTxt+'</td>'
       +'<td style="padding:9px 14px;border-bottom:1px solid #e8dfd4;text-align:center"><span style="background:'+sit.bg+';color:'+sit.cor+';padding:3px 9px;border-radius:20px;font-size:11px;font-weight:700">'+sit.txt+'</span></td>'
@@ -1244,8 +1258,8 @@ function openEmail(depto){
     +'<th style="padding:8px 14px;text-align:center;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#a0907f;border-bottom:2px solid #e8dfd4">Situação</th>'
     +'</tr></thead><tbody>'+rows+'</tbody></table></div>'
     +'<div style="background:#fff;padding:16px 28px 4px;border-left:1px solid #e8d5c4;border-right:1px solid #e8d5c4">'
-    +'<p style="font-size:13px;color:#2c2219;line-height:1.6;margin:0 0 10px">Peço que até o dia <strong>'+prazoRepasse+'</strong>, sejam repassadas as datas em que cada colaborador irá utilizar a(s) folga(s) e/ou compensar as horas residuais listadas acima.</p>'
-    +'<p style="font-size:13px;color:#2c2219;line-height:1.6;margin:0 0 16px">O prazo para que as folgas sejam gozadas e as horas residuais sejam compensadas é <strong>'+prazoGozo+'</strong>.</p>'
+    +(totalFolgas>0?'<p style="font-size:13px;color:#2c2219;line-height:1.6;margin:0 0 10px">Peço que até o dia <strong>'+prazoRepasse+'</strong>, seja repassada a data em que cada colaborador irá utilizar a(s) folga(s) listada(s) acima, respeitando o prazo final de gozo em <strong>'+prazoGozo+'</strong>.</p>':'')
+    +(totalResiduo>0?'<p style="font-size:13px;color:#2c2219;line-height:1.6;margin:0 0 16px">As horas residuais podem ser compensadas de forma flexível (saídas antecipadas ou chegadas com atraso), sem necessidade de agendamento prévio, desde que supervisionadas pelo gestor e integralmente compensadas até <strong>'+prazoGozo+'</strong>.</p>':'')
     +'<p style="font-size:13px;color:#2c2219;margin:0 0 16px">Atenciosamente,</p>'
     +'</div>'
     +'<div style="background:#f5ede4;padding:10px 28px;border-radius:0 0 10px 10px;border:1px solid #e8d5c4;border-top:none;display:flex;justify-content:space-between">'
