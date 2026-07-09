@@ -1203,21 +1203,21 @@ function openEmail(depto){
     const folgaTxt=d.folgas>0?d.folgas+' dia'+(d.folgas!==1?'s':''):'—';
     const resTxt=d.residuo_min!==0?fm(d.residuo_min):'—';
     return '<tr style="background:'+rowBg+'">'
-      +'<td style="padding:9px 14px;border-bottom:1px solid #e8dfd4;font-size:13px;color:#2c2219;font-weight:500;white-space:nowrap">'+d.nome+'</td>'
-      +'<td style="padding:9px 14px;border-bottom:1px solid #e8dfd4;font-size:12px;color:#6b5c4e;white-space:nowrap">'+(d.funcao||'—')+'</td>'
-      +'<td style="padding:9px 14px;border-bottom:1px solid #e8dfd4;font-size:13px;text-align:center;font-weight:700;color:'+(d.folgas>0?'#2d7d52':'#a0907f')+'">'+folgaTxt+'</td>'
-      +'<td style="padding:9px 14px;border-bottom:1px solid #e8dfd4;font-size:13px;text-align:center;font-family:monospace;color:'+(d.residuo_min!==0?d.neg?'#b83232':'#b07d1a':'#a0907f')+'">'+resTxt+'</td>'
-      +'<td style="padding:9px 14px;border-bottom:1px solid #e8dfd4;text-align:center"><span style="background:'+sit.bg+';color:'+sit.cor+';padding:3px 9px;border-radius:20px;font-size:11px;font-weight:700">'+sit.txt+'</span></td>'
+      +'<td style="padding:9px 10px;border-bottom:1px solid #e8dfd4;font-size:12.5px;color:#2c2219;font-weight:500;word-break:break-word">'+d.nome+'</td>'
+      +'<td style="padding:9px 10px;border-bottom:1px solid #e8dfd4;font-size:11.5px;color:#6b5c4e;word-break:break-word">'+(d.funcao||'—')+'</td>'
+      +'<td style="padding:9px 8px;border-bottom:1px solid #e8dfd4;font-size:13px;text-align:center;font-weight:700;color:'+(d.folgas>0?'#2d7d52':'#a0907f')+'">'+folgaTxt+'</td>'
+      +'<td style="padding:9px 8px;border-bottom:1px solid #e8dfd4;font-size:13px;text-align:center;font-family:monospace;color:'+(d.residuo_min!==0?d.neg?'#b83232':'#b07d1a':'#a0907f')+'">'+resTxt+'</td>'
+      +'<td style="padding:9px 8px;border-bottom:1px solid #e8dfd4;text-align:center"><span style="background:'+sit.bg+';color:'+sit.cor+';padding:3px 8px;border-radius:20px;font-size:10.5px;font-weight:700;white-space:nowrap">'+sit.txt+'</span></td>'
       +'</tr>';
   }).join('');
 
   const emailHtml=''
-    +'<div style="font-family:Arial,sans-serif;max-width:760px;margin:0 auto">'
-    +'<div style="background:#2f5f98;padding:20px 28px;border-radius:10px 10px 0 0;display:flex;align-items:center;gap:12px">'
+    +'<div style="font-family:Arial,sans-serif;max-width:650px;margin:0 auto">'
+    +'<div style="background:#2f5f98;padding:18px 22px;border-radius:10px 10px 0 0;display:flex;align-items:center;gap:12px">'
     +'<div style="width:36px;height:36px;background:rgba(255,255,255,.22);border-radius:9px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px;color:#fff;flex-shrink:0">BH</div>'
     +'<div><div style="font-size:16px;font-weight:700;color:#fff">Banco de Horas — Fechamento do Período</div>'
     +'<div style="font-size:12px;color:rgba(255,255,255,.8);margin-top:2px">JCA Contadores</div></div></div>'
-    +'<div style="background:#f5ede4;padding:10px 28px;border-left:1px solid #e8d5c4;border-right:1px solid #e8d5c4">'
+    +'<div style="background:#f5ede4;padding:10px 22px;border-left:1px solid #e8d5c4;border-right:1px solid #e8d5c4">'
     +'<span style="font-size:12px;color:#6b5c4e;margin-right:20px"><strong style="color:#2c2219">Departamento:</strong> '+sD(depto)+'</span>'
     +'<span style="font-size:12px;color:#6b5c4e;margin-right:20px"><strong style="color:#2c2219">Período:</strong> '+period+'</span>'
     +'<span style="font-size:12px;color:#6b5c4e"><strong style="color:#2c2219">Emissão:</strong> '+now+'</span></div>'
@@ -1235,20 +1235,20 @@ function openEmail(depto){
     +'</tr></table>'
     +'<div style="background:#fff;border-left:1px solid #e8d5c4;border-right:1px solid #e8d5c4">'
     +'<div style="padding:12px 14px 8px;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#a0907f;border-bottom:1px solid #f0e8de">Detalhamento por Colaborador</div>'
-    +'<table style="width:100%;border-collapse:collapse"><thead>'
+    +'<table style="width:100%;border-collapse:collapse;table-layout:fixed"><thead>'
     +'<tr style="background:#faf7f4">'
-    +'<th style="padding:8px 14px;text-align:left;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#a0907f;border-bottom:2px solid #e8dfd4">Colaborador</th>'
-    +'<th style="padding:8px 14px;text-align:left;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#a0907f;border-bottom:2px solid #e8dfd4">Função</th>'
-    +'<th style="padding:8px 14px;text-align:center;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#a0907f;border-bottom:2px solid #e8dfd4">Folgas</th>'
-    +'<th style="padding:8px 14px;text-align:center;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#a0907f;border-bottom:2px solid #e8dfd4">Compensação</th>'
-    +'<th style="padding:8px 14px;text-align:center;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#a0907f;border-bottom:2px solid #e8dfd4">Situação</th>'
+    +'<th style="width:26%;padding:8px 10px;text-align:left;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#a0907f;border-bottom:2px solid #e8dfd4">Colaborador</th>'
+    +'<th style="width:29%;padding:8px 10px;text-align:left;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#a0907f;border-bottom:2px solid #e8dfd4">Função</th>'
+    +'<th style="width:13%;padding:8px 8px;text-align:center;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#a0907f;border-bottom:2px solid #e8dfd4">Folgas</th>'
+    +'<th style="width:16%;padding:8px 8px;text-align:center;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#a0907f;border-bottom:2px solid #e8dfd4">Compensação</th>'
+    +'<th style="width:16%;padding:8px 8px;text-align:center;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#a0907f;border-bottom:2px solid #e8dfd4">Situação</th>'
     +'</tr></thead><tbody>'+rows+'</tbody></table></div>'
-    +'<div style="background:#fff;padding:16px 28px 4px;border-left:1px solid #e8d5c4;border-right:1px solid #e8d5c4">'
+    +'<div style="background:#fff;padding:16px 22px 4px;border-left:1px solid #e8d5c4;border-right:1px solid #e8d5c4">'
     +(totalFolgas>0?'<p style="font-size:13px;color:#2c2219;line-height:1.6;margin:0 0 10px">Peço que até o dia <strong>'+prazoRepasse+'</strong>, seja repassada a data em que cada colaborador irá utilizar a(s) folga(s) listada(s) acima, respeitando o prazo final de gozo em <strong>'+prazoGozo+'</strong>.</p>':'')
     +(totalResiduo>0?'<p style="font-size:13px;color:#2c2219;line-height:1.6;margin:0 0 16px">As horas residuais podem ser compensadas de forma flexível (saídas antecipadas ou chegadas com atraso), sem necessidade de agendamento prévio, desde que supervisionadas pelo gestor e integralmente compensadas até <strong>'+prazoGozo+'</strong>.</p>':'')
     +'<p style="font-size:13px;color:#2c2219;margin:0 0 16px">Atenciosamente,</p>'
     +'</div>'
-    +'<div style="background:#f5ede4;padding:10px 28px;border-radius:0 0 10px 10px;border:1px solid #e8d5c4;border-top:none;display:flex;justify-content:space-between">'
+    +'<div style="background:#f5ede4;padding:10px 22px;border-radius:0 0 10px 10px;border:1px solid #e8d5c4;border-top:none;display:flex;justify-content:space-between">'
     +'<span style="font-size:11px;color:#a0907f">Banco de Horas JCA — uso interno</span>'
     +'<span style="font-size:11px;color:#a0907f">'+now+'</span></div></div>';
 
